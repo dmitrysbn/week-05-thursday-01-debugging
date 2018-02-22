@@ -1,11 +1,22 @@
 def select_cards(possible_cards, hand)
 
+  picked_up_cards = 0
+
   possible_cards.each do |current_card|
-    print "Do you want to pick up #{current_card}?"
-    answer = gets.chomp
-    if answer.downcase == 'y'
-      hand << current_card
+    if picked_up_cards < 3
+      print "Do you want to pick up #{current_card}?"
+      answer = gets.chomp
+
+      if answer.downcase == 'y'
+        hand << current_card
+        picked_up_cards += 1
+      end
+
+    else
+      print "You've already picked up 3 cards. "
+      return hand
     end
+
   end
 
   return hand
